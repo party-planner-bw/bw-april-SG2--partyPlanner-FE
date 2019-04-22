@@ -1,8 +1,11 @@
 import React from "react";
 
+import { Link } from 'react-router-dom';
+ 
 import "./Modal.css";
 
 const modal = props => {
+  
   return (
     <div>
       <div
@@ -22,9 +25,9 @@ const modal = props => {
           <p>{props.children}</p>
         </div>
         <div className="modal-footer">
-          <button className="btn-cancel" onClick={props.close}>
+          <Link to='/signUpPage' onClick={props.close} className="btn-cancel">
             SIGN UP
-          </button>
+          </Link>
           <button className="btn-continue">LOGIN</button>
         </div>
       </div>
