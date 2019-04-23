@@ -1,12 +1,16 @@
 import React from 'react';
+import Party from './Party';
 
-class PartyList extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            parties: []
-        }
-    }
+const PartyList = (props) => {
+    return (
+        <div className='party-card'>
+            {props.parties.map(party => {
+                return (
+                    <Party parties={party} />
+                )
+            })}
+        </div>
+    )
 }
 
 export default PartyList;
