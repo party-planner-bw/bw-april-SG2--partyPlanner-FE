@@ -7,6 +7,7 @@ import ModalContainer from "./components/Modal/ModalContainer";
 import PartyList from './components/PartyList';
 import SignUpPage from "./components/SignUpPage";
 
+
 class App extends Component {
   state = {
     parties: []
@@ -24,7 +25,7 @@ axios.get('https://party-planner-build-week.herokuapp.com/api/parties')
       <div className="App">
         <PartyList parties={this.state.parties}/>
         <Route path="/" component={ModalContainer} />
-        <Route path="/signUpPage" component={SignUpPage} />
+        <Route path="/register" component={SignUpPage} />
         <Route path="/partylist" component={PartyList} />
       </div>
     );
