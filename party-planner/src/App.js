@@ -6,6 +6,8 @@ import { Route } from 'react-router-dom';
 import ModalContainer from "./components/Modal/ModalContainer";
 import PartyList from './components/PartyList';
 import SignUpPage from "./components/SignUpPage";
+import ShoppingList from "./components/ShoppingList";
+import TodoList from './components/TodoList';
 
 
 class App extends Component {
@@ -27,6 +29,8 @@ axios.get('https://party-planner-build-week.herokuapp.com/api/parties')
         <Route path="/" component={ModalContainer} />
         <Route path="/register" component={SignUpPage} />
         <Route path="/partylist" component={PartyList} />
+        <ShoppingList />
+        <TodoList />
       </div>
     );
 
