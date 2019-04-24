@@ -93,7 +93,7 @@ class ModalContainer extends React.Component {
             placeholder="Password"
             type="password"
             value={this.state.password}
-            onChange={this.changeHandler}
+            onChange={this.handleInputChange}
           />
           <button onClick={this.signUp}>Sign up</button>
           <button onClick={this.loginHandler}>login</button>
