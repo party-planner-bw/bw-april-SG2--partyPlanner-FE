@@ -1,6 +1,5 @@
 import React from 'react';
 import Axios from 'axios';
-import { truncate } from 'fs';
 
 class PartyForm extends React.Component {
     constructor(props) {
