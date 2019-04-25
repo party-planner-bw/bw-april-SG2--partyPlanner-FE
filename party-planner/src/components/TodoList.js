@@ -21,14 +21,30 @@ class TodoList extends React.Component {
     .catch(err => console.log(err))
   }
 
-  addParties = (e, item) => {
-    e.preventDefault();
-    axios
-      .post('https://party-planner-build-week.herokuapp.com/api/parties', item)
-      .then(res => {
-        this.setState({ todos: res.data })
-      })
-  }
+  // addParties = (e, item) => {
+  //   e.preventDefault();
+  //   axios
+  //     .post('https://party-planner-build-week.herokuapp.com/api/parties', item)
+  //     .then(res => {
+  //       this.setState({ todos: res.data.todo })
+  //       this.props.history.push('/todo');
+  //     })
+  //     .catch(err => {
+  //       console.log(err)
+  //     })
+  // }
+
+  // deleteParties = (e, id) => {
+  //   e.preventDefault();
+  //   axios
+  //   .delete(`https://party-planner-build-week.herokuapp.com/api/parties/${id}`)
+  //   .then(res => {
+  //     this.setState({
+  //       todos: res.data
+  //     })
+  //   })
+  //   .catch(err => console.log(err))
+  // }
 
   componentDidMount() {
     console.log('before',this.props)
@@ -126,7 +142,7 @@ class TodoList extends React.Component {
           {this.state.todos.map(item => {
 
           return (
-            <Todo todos={item} key={item.id} />
+            <Todo todos={item} key={item.id} addParties={this.addParties} />
           )
             
             // <li key={item.id} className={ item.done ? 'done' : 'hidden' }>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Route, Link } from 'react-router-dom';
+// import { Route, Link } from 'react-router-dom';
 
 class Party extends React.Component {
     render() {
