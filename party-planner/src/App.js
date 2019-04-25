@@ -53,16 +53,16 @@ deleteParties = (e, id) => {
   render() {
     return (
       <div className="App">
-        <NavLink to="/partyForm">
+        <NavLink to="/partyForm" className="navLink">
           party form
         </NavLink>
-        <NavLink to="/partyList">
+        <NavLink to="/partyList" className="navLink">
           party list
         </NavLink>
-        <NavLink to="/shoppingList">
+        <NavLink to="/shoppingList" className="navLink">
           shopping List
         </NavLink>
-        <NavLink to="/todoList">
+        <NavLink to="/todoList" className="navLink">
           todo list
         </NavLink>
         

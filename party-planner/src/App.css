@@ -14,4 +14,18 @@
   justify-content: space-evenly;
   flex-wrap: wrap;
   padding: 20px;
+  margin: 40px;
+}
+
+.partyText {
+  text-decoration: none;
+  color: black;
+
+}
+
+.navLink {
+  text-decoration: none;
+  color: black;
+  padding-right: 20px;
+  font-size: 20px;
 }

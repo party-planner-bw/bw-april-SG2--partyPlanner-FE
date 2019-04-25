@@ -9,7 +9,7 @@ const PartyList = (props) => {
             {props.parties.map(party => {
                 console.log(props)
                 return (
-                    <Link to={`/parties/${props.parties.id}`}>\
+                    <Link to={`/parties/${props.parties.id}`} className="partyText">\
                         <Party parties={party} key={party.id} />
                     </Link>
                 )

@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
 
+import { NavLink } from 'react-router-dom';
+
 import Modal from "./Modal";
 
 class ModalContainer extends React.Component {
