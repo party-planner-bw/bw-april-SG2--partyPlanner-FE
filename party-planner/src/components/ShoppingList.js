@@ -1,8 +1,20 @@
 import React from "react";
+import axios from "axios";
 
 class ShoppingList extends React.Component {
   state = {
     items: []
+  }
+
+
+  componentDidMount() {
+    this.getItems();
+  }
+
+  getItems() {
+    return axios
+    .get('https://party-planner-build-week.herokuapp.com/api/items/')
+    .then(res => {this.setState({items: res.data})})
   }
 
   onSubmitHandle(event) {
