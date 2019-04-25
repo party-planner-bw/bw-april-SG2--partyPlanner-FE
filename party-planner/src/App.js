@@ -11,6 +11,7 @@ import TodoList from './components/TodoList';
 
 import './App.css';
 import PartyForm from "./components/PartyForm";
+import PartyView from "./components/PartyView";
 // import Party from "./components/Party";
 
 
@@ -26,7 +27,8 @@ axios.get('https://party-planner-build-week.herokuapp.com/api/parties')
 .catch(err => console.log(err));
 }
 
-addParties = (party) => {
+addParties = (e, party) => {
+  console.log('party', party)
   axios
     .post('https://party-planner-build-week.herokuapp.com/api/parties', party)
     .then(res => {
@@ -38,14 +40,34 @@ addParties = (party) => {
     })
 }
 
+// addParties = event => {
+//   event.preventDefault();
+//   axios
+//   .post('https://party-planner-build-week.herokuapp.com/api/parties', this.state)
+//   .then(res => {
+//     console.log(res)
+//     window.location.reload();
+//   })
+//   .catch(err => {
+//     console.log(err)
+//   })
+  
+//   this.setState({
+//     party: {
+//         theme: '',
+//         date: '',
+//         budget: 0,
+//         guestCount: 0
+//     }
+// }) 
+// }
+
 deleteParties = (e, id) => {
   e.preventDefault();
   axios
   .delete(`https://party-planner-build-week.herokuapp.com/api/parties/${id}`)
   .then(res => {
-    this.setState({
-      todos: res.data
-    })
+    
   })
   .catch(err => console.log(err))
 }
@@ -59,19 +81,19 @@ deleteParties = (e, id) => {
         <NavLink to="/partyList" className="navLink">
           party list
         </NavLink>
-        <NavLink to="/shoppingList" className="navLink">
+        {/* <NavLink to="/shoppingList" className="navLink">
           shopping List
         </NavLink>
         <NavLink to="/todoList" className="navLink">
           todo list
-        </NavLink>
-        //yada
+        </NavLink> */}
+
         <Route path="/" component={ModalContainer} />
         <Route path="/register" component={SignUpPage} />
         {/* <Route path="/partyList" component={PartyList} parties={this.state.parties} /> */}
         <Route path="/partyForm" render={props => ( <PartyForm {...props} addParties={this.addParties} />)} />
-        <Route path="/api/parties/:id" render={props => ( <TodoList {...props} />)} />
-        <Route path="/parties" render={props => ( <TodoList {...props} addParties={this.addParties} /> )} />
+        <Route path="/api/parties/:id" render={props => ( <PartyView {...props} /> )} />
+        {/* <Route path="/parties" render={props => ( <TodoList {...props} addParties={this.addParties} /> )} /> */}
         <Route path="/shoppingList" render={props => ( <ShoppingList {...props}  />)} />
         <Route path="/partyList" render={props => ( <PartyList {...props} {...this.state} parties={this.state.parties} />)} />
       </div>
