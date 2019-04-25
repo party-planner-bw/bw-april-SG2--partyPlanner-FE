@@ -9,6 +9,8 @@ import SignUpPage from "./components/SignUpPage";
 import ShoppingList from "./components/ShoppingList";
 import TodoList from './components/TodoList';
 
+import './App.css';
+
 
 class App extends Component {
   state = {
@@ -31,6 +33,8 @@ axios.get('https://party-planner-build-week.herokuapp.com/api/parties')
         <Route path="/partylist" component={PartyList} />
         <ShoppingList />
         <TodoList />
+        <Route path="/api/parties/:id" render={props => ( <TodoList {...props} />)} />
+        <Route path="/api/parties" render={props => (<TodoList {...props}  /> )} />
       </div>
     );
 

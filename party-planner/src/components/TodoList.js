@@ -1,15 +1,53 @@
 import React from 'react';
+import axios from 'axios';
+
+import Todo from './Todo';
 
 
 class TodoList extends React.Component {
     state = {
-        items: []
+      todos: []
   }
+
+
+  fetchParties = id => {
+    axios 
+    .get(`https://party-planner-build-week.herokuapp.com/api/parties/${id}`)
+    .then(res => {
+      // console.log("\n\nRES",res)
+      // console.log("todo",res.data.todo)
+      this.setState({todos: res.data.party.todos
+      })})
+    .catch(err => console.log(err))
+  }
+
+  addParties = (e, item) => {
+    e.preventDefault();
+    axios
+      .post('https://party-planner-build-week.herokuapp.com/api/parties', item)
+      .then(res => {
+        this.setState({ todos: res.data })
+      })
+  }
+
+  componentDidMount() {
+    console.log('before',this.props)
+    // this.fetchParties(this.props.match.params)
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (this.props.match !== undefined )
+    // if (this.props.match.params !== newProps.match.params) {
+      this.fetchParties(newProps.match.params.id);
+    // }
+  }
+
+
 
   onSubmitHandle(event) {
     event.preventDefault();
     this.setState({
-      items: [...this.state.items, {
+      todos: [...this.state.todos, {
           id: Date.now(),
           title: event.target.item.value,
           done: false,
@@ -22,7 +60,7 @@ class TodoList extends React.Component {
   onDeleteHandle() {
     let id = arguments[0];
     this.setState({
-      items: this.state.items.filter(item => {
+      todos: this.state.todos.filter(item => {
         if (item.id !== id) {
           return item;
         }
@@ -50,7 +88,7 @@ class TodoList extends React.Component {
   onUpdateHandle(event) {
     event.preventDefault();
     this.setState({
-        mockData: this.state.items.map(item => {
+      todos: this.state.todos.map(item => {
           if (item.id === this.state.id) {
             item['title'] = event.target.updatedItem.value;
             return item;
@@ -85,13 +123,18 @@ class TodoList extends React.Component {
           <button className="btn-add-item">Add</button>
         </form>
         <ul>
-          {this.state.items.map(item => (
-            <li key={item.id} className={ item.done ? 'done' : 'hidden' }>
-              {item.title}
-              <button onClick={this.onEditHandle.bind(this, item.id, item.title)}>Edit</button>
-              <button onClick={this.onDeleteHandle.bind(this, item.id)}>Complete</button>
-            </li>
-          ))}
+          {this.state.todos.map(item => {
+
+          return (
+            <Todo todos={item} key={item.id} />
+          )
+            
+            // <li key={item.id} className={ item.done ? 'done' : 'hidden' }>
+            //   {item.title}
+            //   <button onClick={this.onEditHandle.bind(this, item.id, item.title)}>Edit</button>
+            //   <button onClick={this.onDeleteHandle.bind(this, item.id)}>Complete</button>
+            // </li>
+          })}
         </ul>
         {this.renderEditForm()}
       </div>

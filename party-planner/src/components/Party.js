@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 
+import { Route, Link } from 'react-router-dom';
+
 class Party extends React.Component {
         state = {
             parties: []
@@ -14,11 +16,11 @@ class Party extends React.Component {
     }
 
     render() {
+        console.log(this.props)
        return (
-           <div>
-               <h2>{this.props.parties.theme}</h2>
-
-           </div>
+            <div className="singleParty">
+                <h2>{this.props.parties.theme}</h2>
+            </div>
        )
     }
 }
