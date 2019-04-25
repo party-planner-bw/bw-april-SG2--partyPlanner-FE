@@ -65,7 +65,7 @@ deleteParties = (e, id) => {
         <NavLink to="/todoList" className="navLink">
           todo list
         </NavLink>
-        
+        //yada
         <Route path="/" component={ModalContainer} />
         <Route path="/register" component={SignUpPage} />
         {/* <Route path="/partyList" component={PartyList} parties={this.state.parties} /> */}
