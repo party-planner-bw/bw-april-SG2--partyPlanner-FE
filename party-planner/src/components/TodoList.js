@@ -138,20 +138,24 @@ class TodoList extends React.Component {
           <input type="text" name="item" className="item" />
           <button className="btn-add-item">Add</button>
         </form>
-        <ul>
-          {this.state.todos.map(item => {
+        <div>
+          
 
-          return (
-            <Todo todos={item} key={item.id} addParties={this.addParties} />
-          )
+            <div>
+            {this.props.todos.map(todo => (
+
+              <Todo todos={todo.todo} key={todo.id} id={todo.id} party_id={todo.party_id}  />
+            ))}
+            </div>
+            {/* // <Todo todos={item} key={item.id} addParties={this.addParties} /> */}
+          
             
-            // <li key={item.id} className={ item.done ? 'done' : 'hidden' }>
+            {/* // <li key={item.id} className={ item.done ? 'done' : 'hidden' }>
             //   {item.title}
             //   <button onClick={this.onEditHandle.bind(this, item.id, item.title)}>Edit</button>
             //   <button onClick={this.onDeleteHandle.bind(this, item.id)}>Complete</button>
-            // </li>
-          })}
-        </ul>
+            // </li> */}
+        </div>
         {this.renderEditForm()}
       </div>
     );
