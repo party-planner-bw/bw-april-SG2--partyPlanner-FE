@@ -38,7 +38,7 @@ class PartyView extends React.Component {
                     <h3>{this.state.theme}</h3>
                 </div>
                 <ShoppingList />
-                <TodoList />
+                <TodoList todos={this.state.todos} />
             </div>
         )
     }
